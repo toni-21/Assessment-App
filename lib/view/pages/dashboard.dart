@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {
   Color darkBlue = Color.fromRGBO(82, 67, 210, 1);
+  Color purple = Color.fromRGBO(73, 27, 132, 1);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: false,
       body: SafeArea(
-        child: Container(
-          // padding: EdgeInsets.only(top: 30, left: 25, right: 25),
-          child: ListView(
+        child: SingleChildScrollView(
+          child: Column(
             children: <Widget>[
               ClipRRect(
                 borderRadius: BorderRadius.circular(24.0),
@@ -191,6 +191,222 @@ class Dashboard extends StatelessWidget {
                   ),
                 ),
               ),
+
+              //MAIN PART
+              Container(
+                height: 80,
+                margin: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                decoration: BoxDecoration(
+                    color: darkBlue,
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    gradient: LinearGradient(
+                        begin: Alignment.bottomLeft,
+                        end: Alignment.topRight,
+                        stops: [
+                          0.0,
+                          0.4,
+                          0.6,
+                          1.0,
+                        ],
+                        colors: [
+                          darkBlue,
+                          darkBlue,
+                          darkBlue,
+                          purple,
+                        ])),
+                child: Row(children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Congratulations!!",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      SizedBox(height: 3),
+                      Row(
+                        children: [
+                          Text(
+                            "You’ve completed all your tasks for the week and you won ",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 7.5,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text(
+                            "150 points",
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 7.5,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                      SizedBox(
+                        height: 18,
+                        width: 115,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Redeem Now!",
+                            style: TextStyle(
+                              color: darkBlue,
+                              fontSize: 9,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5))),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Container(
+                    margin: EdgeInsets.only(right: 10),
+                    height: 50,
+                    width: 50,
+                    color: Colors.amber,
+                  )
+                ]),
+              ),
+
+              //CARD
+              SizedBox(
+                height: 175,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.only(left: 12, right: 12),
+                    shrinkWrap: true,
+                    //primary: false,
+                    itemCount: 2,
+                    physics: ClampingScrollPhysics(),
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        width: 320,
+                        height: 175,
+                        margin: EdgeInsets.only(left: 12, right: 12),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            // image: DecorationImage(
+                            //   image: AssetImage('assets/card_design.png'),
+                            //   fit: BoxFit.fill,
+                            // ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.75),
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 2.0,
+                              ),
+                            ],
+                            color: Colors.blue),
+                        child: Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(width: 10),
+                                Text(
+                                  "Virtual",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  "1234  5678  9012  3456",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Expiry date",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        SizedBox(height: 5),
+                                        Text(
+                                          "12/34",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(width: 50),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "CVV",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        SizedBox(height: 5),
+                                        Text(
+                                          "123",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  "Janet M Doe",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer(),
+                            Container(
+                              height: 60,
+                              width: 60,
+                              margin: EdgeInsets.only(top: 75, right: 5),
+                              color: Colors.amber,
+                            )
+                          ],
+                        ),
+                      );
+                    }),
+              )
             ],
           ),
         ),
