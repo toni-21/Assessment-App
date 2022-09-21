@@ -2,19 +2,43 @@ import 'package:assessment_app/view/widgets/notification_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _DashboardState();
+  }
+}
+
+class _DashboardState extends State<Dashboard> {
   Color darkBlue = Color.fromRGBO(82, 67, 210, 1);
+  Color darkPurple = Color.fromRGBO(13, 7, 60, 1);
+  Color lightPurple = Color.fromRGBO(61, 52, 139, 0.6);
+  Color lightGreen = Color.fromRGBO(141, 215, 168, 1);
+  Color darkGreen = Color.fromRGBO(29, 150, 74, 1);
+  Color ash = Color.fromRGBO(5, 4, 11, 0.5);
+  Color darkPink = Color.fromRGBO(229, 146, 165, 1);
+  Color darkerPink = Color.fromRGBO(228, 62, 100, 1);
+  Color iconPink = Color.fromRGBO(228, 50, 90, 1);
   Color purple = Color.fromRGBO(73, 27, 132, 1);
+  Color backgroundWhite = Color.fromRGBO(247, 247, 254, 1);
+  Color white = Color.fromRGBO(255, 255, 255, 1);
+
+  List<String> items = ['This Month ', 'Last Month '];
+  String? selectedItem = 'This Month ';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundWhite,
       extendBody: false,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               ClipRRect(
-                borderRadius: BorderRadius.circular(24.0),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(24),
+                  bottomRight: Radius.circular(24),
+                ),
                 child: Container(
                   padding: EdgeInsets.only(top: 30, left: 25, right: 25),
                   margin: const EdgeInsets.only(bottom: 2.0),
@@ -406,7 +430,197 @@ class Dashboard extends StatelessWidget {
                         ),
                       );
                     }),
-              )
+              ),
+
+              Container(
+                  width: 360,
+                  decoration: BoxDecoration(
+                      color: white,
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  margin: EdgeInsets.only(top: 25),
+                  padding:
+                      EdgeInsets.only(top: 10, right: 10, left: 10, bottom: 10),
+                  child: Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Transaction History",
+                            style: TextStyle(
+                              color: darkPurple,
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          // Container(
+                          //   width: 72,
+                          //   height: 20,
+                          //   child: ElevatedButton(
+                          //     onPressed: () {},
+                          //     child: Row(
+                          //       children: [
+                          //         Text(
+                          //           "This Month",
+                          //           style: TextStyle(
+                          //             color: darkPurple,
+                          //             fontSize: 8,
+                          //             fontWeight: FontWeight.w600,
+                          //           ),
+                          //         ),
+                          //         DropdownButton(items: , onChanged: ),
+                          //       ],
+                          //     ),
+                          //     style: ElevatedButton.styleFrom(
+                          //         primary: Colors.white,
+                          //         elevation: 2,
+                          //         padding: EdgeInsets.all(0),
+                          //         shape: RoundedRectangleBorder(
+                          //             borderRadius: BorderRadius.circular(0))),
+                          //   ),
+                          // )
+                          SizedBox(
+                            width: 75,
+                            // height: 20,
+                            child: DropdownButton<String>(
+                              elevation: 2,
+                              alignment: Alignment.center,
+                              value: selectedItem,
+                              icon: Icon(
+                                CupertinoIcons.chevron_down,
+                                size: 13,
+                                color: darkPurple,
+                              ),
+                              items: items
+                                  .map((item) => DropdownMenuItem<String>(
+                                      value: item,
+                                      child: Text(
+                                        item,
+                                        style: TextStyle(
+                                          color: darkPurple,
+                                          fontSize: 9,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )))
+                                  .toList(),
+                              onChanged: (item) => setState(() {
+                                selectedItem = item;
+                              }),
+                            ),
+                          )
+                        ],
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: 5, right: 33, left: 6, bottom: 5),
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Name",
+                              style: TextStyle(
+                                color: lightPurple,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Spacer(),
+                            Text(
+                              "Date",
+                              style: TextStyle(
+                                color: lightPurple,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(width: 53),
+                            Text(
+                              "Time",
+                              style: TextStyle(
+                                color: lightPurple,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(width: 23),
+                            Text(
+                              "Points",
+                              style: TextStyle(
+                                color: lightPurple,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        primary: false,
+                        itemCount: 5,
+                        itemBuilder: ((context, index) {
+                          Color avatarColor = (index == 0 || index == 3)
+                              ? lightGreen
+                              : darkPink;
+                          Color pointColor = (index == 0 || index == 3)
+                              ? darkGreen
+                              : darkerPink;
+                          Color iconColor =
+                              (index == 0 || index == 3) ? darkGreen : iconPink;
+                          return ListTile(
+                              horizontalTitleGap: 0,
+                              contentPadding: EdgeInsets.only(
+                                  left: 5, right: 0, top: 0, bottom: 20),
+                              leading: CircleAvatar(
+                                  backgroundColor: avatarColor,
+                                  radius: 20,
+                                  child: Icon(Icons.wallet_giftcard_outlined,
+                                      color: iconColor, size: 22)),
+                              title: Row(
+                                children: [
+                                  SizedBox(width: 8),
+                                  Text(
+                                    "SuperMart",
+                                    style: TextStyle(
+                                      color: darkPurple,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    "12/06/2022",
+                                    style: TextStyle(
+                                      color: ash,
+                                      fontSize: 9.5,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(width: 22),
+                                  Text(
+                                    "12:34",
+                                    style: TextStyle(
+                                      color: ash,
+                                      fontSize: 9.5,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(width: 20),
+                                  Text(
+                                    "+50points",
+                                    style: TextStyle(
+                                      color: pointColor,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ));
+                        }),
+                      ),
+                    ],
+                  ))
             ],
           ),
         ),
