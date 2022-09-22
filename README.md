@@ -11,7 +11,7 @@ This project is part of an assessment for the role of flutter developer intern a
 ### Built With
 
 * [Flutter](https://flutter.dev/)
-* [Figma Design]()
+* [Figma Design](https://www.figma.com/file/a7WaK3EPfCl86o0y4sUB5T/pavillionrewards?node-id=51%3A1530)
 
 
 ## Getting Started
@@ -24,7 +24,7 @@ To get a local copy of the project up and running, follow these simple steps:
 
 2. Clone the repo using git bash
 ```sh
-git clone https://gitlab.com/dannyore001/veegil-app.git
+git clone https://github.com/toni-21/Assessment-App.git
 ```
 3. Get pub packages
 ```sh
