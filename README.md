@@ -5,7 +5,7 @@ A single page Flutter mobile application.
 
 ## About The Project
 
-This project is part of an assessment for the role of flutter developer intern at [Simplify](yoursimplifybiz@gmail.com).
+This project is part of an assessment for the role of flutter developer intern at [Mercator](https://mercator.ng).
 
 
 ### Built With
