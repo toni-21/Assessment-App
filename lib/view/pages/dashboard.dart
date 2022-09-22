@@ -50,8 +50,9 @@ class _DashboardState extends State<Dashboard> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             CircleAvatar(
-                              backgroundColor: Colors.blue,
-                              child: Icon(Icons.person, size: 32),
+                              backgroundImage: AssetImage(
+                                'assets/profile.png',
+                              ),
                             ),
                             SizedBox(width: 8),
                             Text(
@@ -99,12 +100,12 @@ class _DashboardState extends State<Dashboard> {
                                     BorderRadius.all(Radius.circular(10)),
                               ),
                               child: Row(children: [
-                                Icon(
-                                  Icons.add_circle,
-                                  size: 25,
-                                  color: Colors.white,
+                                ImageIcon(
+                                  AssetImage('assets/wallet_balance.png'),
+                                  color: white,
+                                  size: 26.5,
                                 ),
-                                SizedBox(width: 10),
+                                SizedBox(width: 8),
                                 Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
@@ -153,12 +154,12 @@ class _DashboardState extends State<Dashboard> {
                                     BorderRadius.all(Radius.circular(10)),
                               ),
                               child: Row(children: [
-                                Icon(
-                                  Icons.add_circle,
-                                  size: 25,
-                                  color: Colors.white,
+                                ImageIcon(
+                                  AssetImage('assets/reward_balance.png'),
+                                  color: white,
+                                  size: 26.5,
                                 ),
-                                SizedBox(width: 10),
+                                SizedBox(width: 8),
                                 Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
@@ -208,7 +209,6 @@ class _DashboardState extends State<Dashboard> {
               Container(
                 height: 80,
                 margin: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 decoration: BoxDecoration(
                     color: darkBlue,
                     borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -228,66 +228,72 @@ class _DashboardState extends State<Dashboard> {
                           purple,
                         ])),
                 child: Row(children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Congratulations!!",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Congratulations!!",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 3),
-                      Row(
-                        children: [
-                          Text(
-                            "You’ve completed all your tasks for the week and you won ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 7.5,
-                              fontWeight: FontWeight.w700,
+                        SizedBox(height: 3),
+                        Row(
+                          children: [
+                            Text(
+                              "You’ve completed all your tasks for the week and you won ",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 7.5,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "150 points",
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 7.5,
-                              fontWeight: FontWeight.w700,
+                            Text(
+                              "150 points",
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 7.5,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      SizedBox(
-                        height: 18,
-                        width: 115,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Redeem Now!",
-                            style: TextStyle(
-                              color: darkBlue,
-                              fontSize: 9,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5))),
+                          ],
                         ),
-                      ),
-                    ],
+                        Spacer(),
+                        SizedBox(
+                          height: 18,
+                          width: 115,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Redeem Now!",
+                              style: TextStyle(
+                                color: darkBlue,
+                                fontSize: 9,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5))),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Spacer(),
                   Container(
-                    margin: EdgeInsets.only(right: 10),
-                    height: 50,
-                    width: 50,
-                    color: Colors.amber,
+                    height: 75,
+                    width: 85,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/celebration.png'),
+                          fit: BoxFit.cover),
+                    ),
                   )
                 ]),
               ),
@@ -310,19 +316,20 @@ class _DashboardState extends State<Dashboard> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            // image: DecorationImage(
-                            //   image: AssetImage('assets/card_design.png'),
-                            //   fit: BoxFit.fill,
-                            // ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.75),
-                                offset: Offset(0.0, 1.0),
-                                blurRadius: 2.0,
-                              ),
-                            ],
-                            color: Colors.blue),
+                          borderRadius: BorderRadius.circular(12),
+                          image: DecorationImage(
+                            image: AssetImage('assets/card_background.png'),
+                            fit: BoxFit.fill,
+                          ),
+                          color: darkBlue,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.75),
+                              offset: Offset(0.0, 1.0),
+                              blurRadius: 2.0,
+                            ),
+                          ],
+                        ),
                         child: Row(
                           children: [
                             Column(
@@ -410,9 +417,14 @@ class _DashboardState extends State<Dashboard> {
                             Spacer(),
                             Container(
                               height: 60,
-                              width: 60,
+                              width: 72,
                               margin: EdgeInsets.only(top: 75, right: 5),
-                              color: Colors.amber,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('assets/mastercard.png'),
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
                             )
                           ],
                         ),
@@ -531,15 +543,22 @@ class _DashboardState extends State<Dashboard> {
                             (index == 0 || index == 3) ? darkGreen : darkerPink;
                         Color iconColor =
                             (index == 0 || index == 3) ? darkGreen : iconPink;
+                        String iconString = (index == 0 || index == 3)
+                            ? 'assets/gift_green.png'
+                            : 'assets/gift_red.png';
                         return ListTile(
                             horizontalTitleGap: 0,
                             contentPadding: EdgeInsets.only(
                                 left: 5, right: 0, top: 0, bottom: 20),
                             leading: CircleAvatar(
-                                backgroundColor: avatarColor,
-                                radius: 20,
-                                child: Icon(Icons.wallet_giftcard_outlined,
-                                    color: iconColor, size: 22)),
+                              backgroundColor: avatarColor,
+                              radius: 20,
+                              child: ImageIcon(
+                                AssetImage(iconString),
+                                color: iconColor,
+                                size: 27.5,
+                              ),
+                            ),
                             title: Row(
                               children: [
                                 SizedBox(width: 8),

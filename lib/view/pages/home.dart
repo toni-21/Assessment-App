@@ -52,13 +52,19 @@ class _HomeState extends State<StatefulWidget> {
                 type: BottomNavigationBarType.fixed,
                 items: [
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.home), label: 'Home'),
+                      icon: Icon(Icons.home_rounded), label: 'Home'),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.wallet), label: 'Payment'),
+                    icon: Icon(Icons.wallet),
+                    label: 'Payment',
+                  ),
                   BottomNavigationBarItem(
-                      icon: Icon(CupertinoIcons.creditcard), label: 'Cards'),
+                    icon: Icon(CupertinoIcons.creditcard),
+                    label: 'Cards',
+                  ),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.settings_outlined), label: 'Settings'),
+                    icon: Icon(Icons.settings_outlined),
+                    label: 'Settings',
+                  ),
                 ]),
           ),
         ));
